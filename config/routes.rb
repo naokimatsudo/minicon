@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
+  devise_for :users
+  get 'events/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # root 'controller_name#action_name'
-  root 'application#hello'
+  root 'events#index'
+  resources :events, only: [:index] do
+    resources :purchases, only: [:new, :create]
+  end
   
+  get '/purchases', to: 'purchases#index'
   namespace :admin do
     resources :event_categories
-    get 'events', to: 'events#index'
-    get 'events/show'
-    get 'events/new'
-    get 'events/edit'
+    resources :events
   end
 end

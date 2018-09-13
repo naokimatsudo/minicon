@@ -10,13 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_01_25_152003) do
+ActiveRecord::Schema.define(version: 2018_09_13_085007) do
 
   create_table "event_categories", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer "event_category_id"
+    t.string "title"
+    t.string "location"
+    t.datetime "start_at"
+    t.integer "ticket_price"
+    t.integer "ticket_quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_category_id"], name: "index_events_on_event_category_id"
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "event_id"
+    t.integer "status", default: 0
+    t.integer "ticket_quantity"
+    t.integer "total_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

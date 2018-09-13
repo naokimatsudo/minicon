@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_category: one
+  title: MyString
+  location: MyString
+  start_at: 2018-09-13 05:47:44
+  ticket_price: 1
+  ticket_quantity: 1
+
+two:
+  event_category: two
+  title: MyString
+  location: MyString
+  start_at: 2018-09-13 05:47:44
+  ticket_price: 1
+  ticket_quantity: 1
