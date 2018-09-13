@@ -5,5 +5,9 @@ Rails.application.routes.draw do
   
   namespace :admin do
     resources :event_categories
+    get 'events', to: 'events#index'
+    get 'events/show'
+    get 'events/new'
+    get 'events/edit'
   end
 end
